@@ -55,5 +55,49 @@ $ ninja
 ```
 
 ### License
-
 `cef-pdf` is licensed under the MIT license.
+
+
+#Tangro-Adjustments:
+
+I did two small changes:
+
+a)
+```
+m_settings.command_line_args_disabled = false;
+```
+This change allows passing command line parameters to the CEF, e.g. : 
+```
+--proxy-server="proxy.tangro.de:8080"
+```
+See the following uri for Chrome proxy configuration parameters:
+http://www.chromium.org/developers/design-documents/network-settings#TOC-Command-line-options-for-proxy-settings
+
+b) 
+```
+m_settings.ignore_certificate_errors = true;
+```
+
+This settings ignores any certificate error in the future; e.g. if any certificate or even CA validity has expired. the rest is identical to the project cef-pdf (see https://github.com/jcoleman1969/cef-pdf).
+
+
+### Building with Visual Studio 2017
+
+1. install CMake from https://cmake.org/
+
+2. Download the following version from the chrome embedded framework (or any newer version*):
+http://opensource.spotify.com/cefbuilds/cef_binary_73.1.12%2Bgee4b49f%2Bchromium-73.0.3683.75_windows64.tar.bz2
+
+3. unpack the above to a directory cef/ inside the project (see path below, can be changed... you need to set variable DCEF_ROOT to point to the dir)
+
+4. execute the following command **inside the project** to create Win64 solution files for VS2017 (adjust paths)- or give git repo path as second param (instead of .):
+
+```
+cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release -DCEF_ROOT=C:/path/to/cef-pdf/cef C:/path/to/cef-pdf/
+```
+e.g.:
+```
+cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release -DCEF_ROOT=C:/develop/visual_studio/cef-pdf/cef .
+```
+
+*NOTE: some methods might have changed!

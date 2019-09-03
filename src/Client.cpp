@@ -26,7 +26,9 @@ Client::Client() :
 {
     m_settings.no_sandbox = true;
     m_settings.windowless_rendering_enabled = true;
-    m_settings.command_line_args_disabled = true;
+    m_settings.command_line_args_disabled = false;
+	m_settings.ignore_certificate_errors = true;
+
 
     m_windowInfo.windowless_rendering_enabled = true;
 
