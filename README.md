@@ -58,7 +58,7 @@ $ ninja
 `cef-pdf` is licensed under the MIT license.
 
 
-#Tangro-Adjustments:
+# Tangro-Adjustments:
 
 I did two small changes:
 
