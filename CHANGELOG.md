@@ -1,5 +1,11 @@
 Changelog
 ===
+
+### 0.3.5 (2019-09-03)
+* Building with CEF 73.1.12+gee4b49f+chromium-73.0.3683.75 / Chromium 73.0.3683.75 (Windows, Linux & OS X, 64bit)
+* Activated command line switches for underlying cef: e.g. now its possible to use proxies via --proxy-server="server.name:8080" (and other cef command line switches)
+* Certificate errors when loading from HTTPS-urls should be ignored now
+
 ### 0.3.4 (2018-03-20)
 * Building with CEF 3.3325.1750.gaabe4c4 / Chromium 65.0.3325.146 (Windows, Linux & OS X, 64bit)
 * Bug fixes
