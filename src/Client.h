@@ -106,7 +106,6 @@ public:
     virtual CefRefPtr<CefRequestHandler> GetRequestHandler() override;
     virtual bool OnProcessMessageReceived(
         CefRefPtr<CefBrowser> browser,
-        CefRefPtr<CefFrame> frame,
         CefProcessId source_process,
         CefRefPtr<CefProcessMessage> message
     ) override;
@@ -140,9 +139,10 @@ public:
         CefRefPtr<CefBrowser> browser,
         CefRefPtr<CefFrame> frame,
         CefRefPtr<CefRequest> request,
-        bool user_gesture,
         bool is_redirect
     ) override;
+
+
 
     virtual void OnRenderProcessTerminated(
         CefRefPtr<CefBrowser> browser,

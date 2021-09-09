@@ -138,7 +138,7 @@ set_property(GLOBAL PROPERTY OS_FOLDERS ON)
 #            distribution and your project.
 # A. Comment in these lines:
 #
-#set(CEF_ROOT "${CMAKE_CURRENT_SOURCE_DIR}")
+set(CEF_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/cef")
 #set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CEF_ROOT}/cmake")
 
 # Example 2: The binary distribution is in a separate directory from your

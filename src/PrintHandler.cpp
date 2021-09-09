@@ -4,18 +4,10 @@
 
 namespace cefpdf {
 
-PrintHandler::PrintHandler() {}
+PrintHandler::PrintHandler() = default;
 
 // CefPrintHandler methods:
 // -------------------------------------------------------------------------
-CefSize PrintHandler::GetPdfPaperSize(int device_units_per_inch)
-{
-    DLOG(INFO)
-        << "PrintHandler::GetPdfPaperSize"
-        << " with device_units_per_inch: " << device_units_per_inch;
-
-    return CefSize(device_units_per_inch*100, device_units_per_inch*100*2);
-}
 
 bool PrintHandler::OnPrintDialog(
     CefRefPtr<CefBrowser> browser,
@@ -50,6 +42,13 @@ void PrintHandler::OnPrintSettings(
 void PrintHandler::OnPrintStart(CefRefPtr<CefBrowser> browser)
 {
 
+}
+CefSize PrintHandler::GetPdfPaperSize(int device_units_per_inch) {
+  DLOG(INFO)
+  << "PrintHandler::GetPdfPaperSize"
+  << " with device_units_per_inch: " << device_units_per_inch;
+
+  return CefSize(device_units_per_inch*100, device_units_per_inch*100*2);
 }
 
 } // namespace cefpdf

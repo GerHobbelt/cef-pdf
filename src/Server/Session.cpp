@@ -14,6 +14,7 @@
 #include <ostream>
 #include <functional>
 #include <regex>
+#include <include/base/cef_callback.h>
 
 namespace cefpdf {
 namespace server {

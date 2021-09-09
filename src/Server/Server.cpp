@@ -7,6 +7,7 @@
 #include <iostream>
 #include <utility>
 #include <functional>
+#include <include/base/cef_callback.h>
 
 namespace cefpdf {
 namespace server {

@@ -11,6 +11,7 @@
 #include "include/wrapper/cef_closure_task.h"
 
 #include <thread>
+#include <include/base/cef_callback.h>
 
 namespace cefpdf {
 
@@ -100,7 +101,7 @@ void Client::CreateBrowsers(unsigned int browserCount)
     while (m_pendingBrowsersCount > 0 && m_browsersCount <= constants::maxProcesses) {
         --m_pendingBrowsersCount;
         ++m_browsersCount;
-        CefBrowserHost::CreateBrowser(m_windowInfo, this, "", m_browserSettings, NULL, NULL);
+        CefBrowserHost::CreateBrowser(m_windowInfo, this, "", m_browserSettings, nullptr);
     }
 }
 
@@ -113,7 +114,7 @@ CefRefPtr<CefBrowserProcessHandler> Client::GetBrowserProcessHandler()
 
 void Client::OnRegisterCustomSchemes(CefRawPtr<CefSchemeRegistrar> registrar)
 {
-    registrar->AddCustomScheme(constants::scheme, CEF_SCHEME_OPTION_STANDARD);
+    registrar->AddCustomScheme(constants::scheme, true, false, false, false, true, false);
 }
 
 void Client::OnBeforeCommandLineProcessing(const CefString& process_type, CefRefPtr<CefCommandLine> command_line)
@@ -185,7 +186,6 @@ CefRefPtr<CefRequestHandler> Client::GetRequestHandler()
 
 bool Client::OnProcessMessageReceived(
     CefRefPtr<CefBrowser> browser,
-    CefRefPtr<CefFrame> frame,
     CefProcessId source_process,
     CefRefPtr<CefProcessMessage> message
 ) {
@@ -297,7 +297,6 @@ bool Client::OnBeforeBrowse(
     CefRefPtr<CefBrowser> browser,
     CefRefPtr<CefFrame> frame,
     CefRefPtr<CefRequest> request,
-    bool user_gesture,
     bool is_redirect
 ) {
     DLOG(INFO) << "Client::OnBeforeBrowse";

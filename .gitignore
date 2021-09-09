@@ -1,3 +1,7 @@
 build/
 cef/
+cef.tar.bz2
 .DS_Store
+cmake-build-debug/
+cmake-build-release/
+.idea/
